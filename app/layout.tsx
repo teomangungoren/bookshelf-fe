@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import {Navbar} from "@/app/components/navbar/navbar";
 import {Footer} from "@/app/components/footer/footer";
+import {ColorSchemeScript,MantineProvider} from "@mantine/core";
+import AuthProvider from "@/app/hooks/auth";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-      <div className="flex flex-col min-h-screen bg-amber-200">
+    <head>
+        <ColorSchemeScript defaultColorScheme="dark"/>
+    </head>
+    <body className={inter.className}>
+    <div className="flex flex-col min-h-screen bg-amber-200">
         <Navbar/>
-     <main className="flex-grow">{children}</main>
+-      <main className="flex-grow">{children}
+          </main>
       </div>
       <Footer/>
       </body>

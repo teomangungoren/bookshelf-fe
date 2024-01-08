@@ -3,6 +3,7 @@ import { useEffect, useState} from "react";
 import {getBooksByCategoryIdAPICall} from "@/app/services/BookService";
 import {BookCard} from "@/app/components/bookcard/bookCard";
 import Link from "next/link";
+import {useAuth} from "@/app/hooks/auth";
 
 interface Book{
     id:string,
@@ -16,8 +17,9 @@ type BookList=Book[];
 const CategoryPage = ({ params }: { params: { categoryId: string } })=>{
     const categoryId=params.categoryId
     const [bookList,setBookList]=useState<BookList>([]);
+    const {auth}=useAuth()
     useEffect(()=>{
-        if(bookList.length==0 && categoryId){
+        if(bookList.length==0 && categoryId && auth?.accessToken){
             getBooksByCategoryIdAPICall(categoryId).then((response)=>{
                 setBookList(response.data);
             })

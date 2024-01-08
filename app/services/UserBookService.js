@@ -10,3 +10,8 @@ export const userBookAPICall = async ()=>{
 export const getUserBookAPICall = async ()=>{
     return await axios.get(USER_BOOK_REST_API_URL+"/");
 }
+
+export const getAllUsersByBookIdAPICall= async (bookId)=>{
+    return await axios.get(USER_BOOK_REST_API_URL+"/users/"+bookId)
+}
+

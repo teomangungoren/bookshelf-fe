@@ -1,25 +1,31 @@
 "use client"
-import React, { useState } from "react";
-import { loginAPICall } from "@/app/services/AuthService";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
-import bgImage from "path/to/your/bgImage.jpg"; // Replace with your actual image path
+import { useRouter } from "next/navigation";
+import AuthProvider, { useAuth } from "@/app/hooks/auth";
+import { loginAPICall } from "@/app/services/AuthService";
+
 
 const Login = () => {
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-    });
+    const { signIn, auth, signOut } = useAuth();
+    const [isLogin, setLogin] = useState(false);
+    const router = useRouter();
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
-            const response = loginAPICall(formData);
+            const email = emailRef.current?.value;
+            const password = passwordRef.current?.value;
+
+            const response = await loginAPICall({ email, password });
+
+            if (response) {
+                setLogin(true);
+                router.push("/");
+            }
         } catch (error) {
             console.error(error);
         }
@@ -31,21 +37,11 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <label>
                         Email:
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
+                        <input type="email" name="email" ref={emailRef} />
                     </label>
                     <label>
                         Password:
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                        />
+                        <input type="password" name="password" ref={passwordRef} />
                     </label>
                     <div>
                         <button type="submit">Login</button>
@@ -63,4 +59,11 @@ const Login = () => {
     );
 };
 
-export default  Login
+// Wrap the Login component with the AuthProvider component
+export default function LoginWrapper() {
+    return (
+        <AuthProvider>
+            <Login />
+        </AuthProvider>
+    );
+}

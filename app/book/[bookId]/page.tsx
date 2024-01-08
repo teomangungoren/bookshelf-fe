@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { getBookByIdAPICall } from "@/app/services/BookService";
 import Image from "next/image";
 import styles from "./bookDetail.module.css";
+import BookCommentList from "@/app/components/bookComment/page";
+import UserBookPage from "@/app/components/userBook/userBook";
 
 interface Book {
     id: string;
@@ -36,20 +38,34 @@ const BookDetailPage = ({ params }: { params: { bookId: string } }) => {
     return (
         <div className={styles.bookDetailContainer}>
             <div className="flex-1 bg-cover bg-no-repeat">
-                <Image src={bookDetail?.imageUrl} alt={bookDetail?.title} />
+                <Image src={bookDetail?.imageUrl}
+                       alt={bookDetail?.title}
+                       width={300}
+                      height={300}
+                      className={styles.ResponsiveImage}
+                />
             </div>
-            <div className={styles.imageContainer}></div>
             <div className={styles.detailsContainer}>
-                <h1>{bookDetail?.title}</h1>
-                <p>Author: {bookDetail?.author}</p>
+                <div>
+                <h1 className="text-2xl font-bold mb-3">{bookDetail?.title}</h1>
+                    </div>
+                    <p>Author: {bookDetail?.author}</p>
                 <p>Book Year: {bookDetail?.bookYear}</p>
                 <p>Press Year: {bookDetail?.pressYear}</p>
                 <p>Book Isbn: {bookDetail?.isbn}</p>
                 <p>Page: {bookDetail?.totalPageNumber}</p>
                 <p>Total Owner: {bookDetail?.totalOwner}</p>
                 <p>Total Rating: {bookDetail?.totalRating}</p>
+                <div>
+                    <BookCommentList bookId={bookId}></BookCommentList>
+                </div>
+                <div>
+                    <UserBookPage bookId={bookId}/>
+                </div>
             </div>
+
         </div>
+
     );
 }
-    export default BookDetailPage;
+export default BookDetailPage;

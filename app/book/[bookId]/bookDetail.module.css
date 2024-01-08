@@ -1,9 +1,17 @@
 .bookDetailContainer {
     display: flex;
-    justify-content: space-between;
-    max-width: 800px; /* Adjust as needed */
+    justify-content: flex-start;
+    max-width: 600px; /* Adjust as needed */
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+    color:black
+}
+
+
+.ResponsiveImage{
+    display: block;
+    height: auto;
+    width: 100%;
 }
 
 .imageContainer {

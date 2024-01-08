@@ -1,5 +1,5 @@
 "use client"
-import {useEffect,useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import {categoriesAPICall} from "@/app/services/CategoryService";
 import Link from "next/link";
 

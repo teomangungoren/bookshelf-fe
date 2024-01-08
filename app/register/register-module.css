@@ -1,4 +1,21 @@
-/* Stil dosyanızın başına ekleyin veya ayrı bir dosya olarak ekleyebilirsiniz */
+.ResponsiveImage{
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.big{
+    height: auto;
+    width: 50%;
+    padding: 70px 150px;
+    margin-left:350px;
+}
+
+
+image{
+    max-width: 100%;
+}
+
 
 .container
 {

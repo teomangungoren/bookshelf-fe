@@ -1,0 +1,16 @@
+.search{
+
+}
+
+.search-input{
+    width: 300px;
+    border-radius: 5px;
+    height: 25px;
+    color: black;
+}
+
+.search-button{
+    padding: 5px;
+    border: black 15px;
+
+}
