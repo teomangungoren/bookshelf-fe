@@ -24,8 +24,8 @@
 
             try {
                 const response = await  registerAPICall(formData);
-                if(response.status==201){
-                   router       .push("/login")
+                if(response.status===201){
+                   router.push("/login")
                 }
             } catch (error) {
                 console.error(error);

@@ -8,6 +8,10 @@ export  const booksCommentAPICall= async (bookId)=>{
 }
 
 export const postBooksCommentAPICall= async (request)=>{
-    return await axios.post(BOOK_COMMENT_REST_API_URL+"/"+"create",request)
+    return await axios.post(BOOK_COMMENT_REST_API_URL+"/"+"create",request,{
+        headers:{
+            Authorization:`Bearer ${localStorage.getItem("user")}`
+        }
+    })
 }
 

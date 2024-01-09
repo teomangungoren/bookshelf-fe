@@ -17,9 +17,8 @@ type BookList=Book[];
 const CategoryPage = ({ params }: { params: { categoryId: string } })=>{
     const categoryId=params.categoryId
     const [bookList,setBookList]=useState<BookList>([]);
-    const {auth}=useAuth()
     useEffect(()=>{
-        if(bookList.length==0 && categoryId && auth?.accessToken){
+        if(bookList.length==0 && categoryId){
             getBooksByCategoryIdAPICall(categoryId).then((response)=>{
                 setBookList(response.data);
             })
@@ -30,9 +29,7 @@ const CategoryPage = ({ params }: { params: { categoryId: string } })=>{
         <div>
             <div className="flex items-center flex-wrap gap-3 md:gap-10">
                 {bookList.map((book, index) => (
-                    <Link href={`/book/${book.id}`} key={index}>
                         <BookCard key={book.id} book={book} />
-                    </Link>
                 ))}
             </div>
         </div>

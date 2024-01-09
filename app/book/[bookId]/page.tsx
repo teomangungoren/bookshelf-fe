@@ -5,6 +5,8 @@ import Image from "next/image";
 import styles from "./bookDetail.module.css";
 import BookCommentList from "@/app/components/bookComment/page";
 import UserBookPage from "@/app/components/userBook/userBook";
+import AddInput from "@/app/components/userBook/addInput";
+import AddUserWishlist from "@/app/components/userWishList/AddInput";
 
 interface Book {
     id: string;
@@ -58,6 +60,8 @@ const BookDetailPage = ({ params }: { params: { bookId: string } }) => {
                 <p>Total Rating: {bookDetail?.totalRating}</p>
                 <div>
                     <BookCommentList bookId={bookId}></BookCommentList>
+                    <AddInput bookId={bookId}/>
+                    <AddUserWishlist bookId={bookId}/>
                 </div>
                 <div>
                     <UserBookPage bookId={bookId}/>

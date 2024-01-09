@@ -25,4 +25,8 @@ export function loginAPICall(loginObj) {
         return  `Bearer ${localStorage.getItem("user")}`
     }
 
+    export function getCurrentUsername(){
+    return localStorage.getItem("username")
+    }
+
 

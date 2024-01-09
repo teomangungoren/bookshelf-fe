@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import { booksCommentAPICall, postBooksCommentAPICall } from "@/app/services/BookComment";
-import {getCurrentUser} from "@/app/services/AuthService";
-import {router} from "next/client";
+import LikeButton from "@/app/components/bookCommentLike/AddInput";
+
 
 interface BookCommentListProps {
     bookId: string;
@@ -20,6 +20,11 @@ const BookCommentList: React.FC<BookCommentListProps> = ({ bookId }) => {
     const [comments, setComments] = useState<BookComment[]>([]);
     const [loading, setLoading] = useState(true);
     const [newComment, setNewComment] = useState("");
+
+    const getUsernameFromEmail = (email: string): string => {
+        const atIndex = email.indexOf('@');
+        return email.substring(0, atIndex);
+    };
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -46,8 +51,7 @@ const BookCommentList: React.FC<BookCommentListProps> = ({ bookId }) => {
             setComments(response.data);
 
             setNewComment("");
-            }
-        catch (error) {
+        } catch (error) {
             console.error("Error submitting comment:", error);
         }
     };
@@ -62,7 +66,8 @@ const BookCommentList: React.FC<BookCommentListProps> = ({ bookId }) => {
             <ul>
                 {comments.map((comment) => (
                     <li key={comment.id}>
-                        <strong>{comment.username}</strong>: {comment.comment}
+                        <strong>{getUsernameFromEmail(comment.username)}</strong>: {comment.comment}
+                        <LikeButton bookCommentId={comment.id}/>
                     </li>
                 ))}
             </ul>

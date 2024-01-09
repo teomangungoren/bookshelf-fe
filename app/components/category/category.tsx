@@ -10,12 +10,15 @@ interface Category {
 
 type CategoryList = Category[];
 
-const Category = () => {
+const Category =  () => {
     const[categoryList,setCategoryList]=useState<CategoryList>([])
     useEffect(() => {
-        categoriesAPICall().then((response) => {
+        const fetchData = async() => {
+            let response = await categoriesAPICall();
+
             setCategoryList(response.data);
-        });
+        }
+        fetchData().then(() =>{}).catch((e) =>{console.log(e)});
     }, []);
 
     return (

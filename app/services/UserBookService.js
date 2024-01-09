@@ -15,3 +15,12 @@ export const getAllUsersByBookIdAPICall= async (bookId)=>{
     return await axios.get(USER_BOOK_REST_API_URL+"/users/"+bookId)
 }
 
+export const createUserBookByBookIdAPICall= async (request)=>{
+    return await axios.post(USER_BOOK_REST_API_URL+"/create",request,{
+        headers:{
+            Authorization:`Bearer ${localStorage.getItem("user")}`
+}
+    })
+}
+
+

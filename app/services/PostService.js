@@ -7,6 +7,10 @@ export const getPostsAPICall=()=>{
 }
 
 export const postPostAPICall= async (request)=>{
-    return await axios.post(POST_REST_API_URL+"/"+"create",request)
+    return await axios.post(POST_REST_API_URL+"/create",request,{
+        headers:{
+            Authorization:`Bearer ${localStorage.getItem("user")}`
+        }
+    })
 }
 

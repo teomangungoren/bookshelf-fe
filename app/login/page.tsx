@@ -7,7 +7,6 @@ import { loginAPICall } from "@/app/services/AuthService";
 
 
 const Login = () => {
-    const { signIn, auth, signOut } = useAuth();
     const [isLogin, setLogin] = useState(false);
     const router = useRouter();
     const emailRef = useRef(null);
