@@ -24,7 +24,7 @@ const BookSlider = () => {
 
                 setPopularBooks(bookDetails);
             } catch (error) {
-                console.error('Error fetching popular wishlist:', error);
+                console.error('Error fetching popularWishlist wishlist:', error);
             }
         };
 

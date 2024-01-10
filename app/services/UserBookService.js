@@ -22,5 +22,8 @@ export const createUserBookByBookIdAPICall= async (request)=>{
 }
     })
 }
+export const getPopularUserBooks = async () =>{
+    return await axios.get(USER_BOOK_REST_API_URL+"/popular")
+}
 
 
