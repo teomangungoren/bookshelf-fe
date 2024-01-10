@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AuthProvider, { useAuth } from "@/app/hooks/auth";
 import { loginAPICall } from "@/app/services/AuthService";
+import "./login.css"
 
 
 const Login = () => {
@@ -31,7 +32,7 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex">
+        <div className="login-page min-h-screen flex">
             <div className="flex-1 p-4">
                 <form onSubmit={handleSubmit}>
                     <label>

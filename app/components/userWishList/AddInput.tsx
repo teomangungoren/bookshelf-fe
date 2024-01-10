@@ -1,5 +1,6 @@
 import React from 'react';
 import {createUserWishlist} from "@/app/services/UserWishListService";
+import "../userBook/userBook.css"
 
 interface AddInputProps {
     bookId: string;
@@ -16,7 +17,7 @@ const AddUserWishlist: React.FC<AddInputProps> = ({ bookId }) => {
 
     return (
         <div>
-            <button onClick={handleAddButtonClick}>İstek Listeme Ekle</button>
+            <button className="btn" onClick={handleAddButtonClick}>İstek Listeme Ekle</button>
         </div>
     );
 };

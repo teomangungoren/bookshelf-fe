@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { booksCommentAPICall, postBooksCommentAPICall } from "@/app/services/BookComment";
 import LikeButton from "@/app/components/bookCommentLike/AddInput";
+import "./page.css"
 
 
 interface BookCommentListProps {
@@ -61,7 +62,7 @@ const BookCommentList: React.FC<BookCommentListProps> = ({ bookId }) => {
     }
 
     return (
-        <div>
+        <div className="comments">
             <h2>Comments</h2>
             <ul>
                 {comments.map((comment) => (
@@ -71,7 +72,7 @@ const BookCommentList: React.FC<BookCommentListProps> = ({ bookId }) => {
                     </li>
                 ))}
             </ul>
-            <form onSubmit={handleCommentSubmit}>
+            <form className="page-category" onSubmit={handleCommentSubmit}>
                 <input
                     type="text"
                     value={newComment}

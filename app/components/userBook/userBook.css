@@ -1,0 +1,17 @@
+.btn{
+    background-color: #7f2020;
+    background-color: white;
+    color: #7f2020;
+    padding: 10px;
+    border: 2px #7f2020 groove;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 145px;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.btn:hover{
+    background-color: #7f2020;
+    color: white;
+}

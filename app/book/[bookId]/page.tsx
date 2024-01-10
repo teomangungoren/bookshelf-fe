@@ -14,11 +14,13 @@ interface Book {
     author: string;
     bookYear: string;
     pressYear: string;
+    description:string;
     isbn: string;
     totalPageNumber: number;
     imageUrl: string;
     totalOwner: number;
     totalRating: number;
+    categoryName:string;
 }
 
 const BookDetailPage = ({ params }: { params: { bookId: string } }) => {
@@ -39,7 +41,7 @@ const BookDetailPage = ({ params }: { params: { bookId: string } }) => {
 
     return (
         <div className={styles.bookDetailContainer}>
-            <div className="flex-1 bg-cover bg-no-repeat">
+            <div className="flex bg-cover bg-no-repeat">
                 <Image src={bookDetail?.imageUrl}
                        alt={bookDetail?.title}
                        width={300}
@@ -49,16 +51,18 @@ const BookDetailPage = ({ params }: { params: { bookId: string } }) => {
             </div>
             <div className={styles.detailsContainer}>
                 <div>
+                <p className={styles.category}>{bookDetail?.categoryName}</p>
                 <h1 className="text-2xl font-bold mb-3">{bookDetail?.title}</h1>
-                    </div>
-                    <p>Author: {bookDetail?.author}</p>
+                </div>
+                <div>
+                <p>Author: {bookDetail?.author}</p>
+                <p>Total Rating: {bookDetail?.totalRating} ({bookDetail?.totalOwner})</p>
                 <p>Book Year: {bookDetail?.bookYear}</p>
                 <p>Press Year: {bookDetail?.pressYear}</p>
+                <p>{bookDetail?.description}</p>
                 <p>Book Isbn: {bookDetail?.isbn}</p>
                 <p>Page: {bookDetail?.totalPageNumber}</p>
-                <p>Total Owner: {bookDetail?.totalOwner}</p>
-                <p>Total Rating: {bookDetail?.totalRating}</p>
-                <div>
+
                     <BookCommentList bookId={bookId}></BookCommentList>
                     <AddInput bookId={bookId}/>
                     <AddUserWishlist bookId={bookId}/>

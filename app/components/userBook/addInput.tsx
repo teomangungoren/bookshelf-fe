@@ -1,5 +1,6 @@
 import React from 'react';
 import {createUserBookByBookIdAPICall} from "@/app/services/UserBookService";
+import "./userBook.css"
 
 interface AddInputProps {
     bookId: string;
@@ -17,7 +18,7 @@ const AddInput: React.FC<AddInputProps> = ({ bookId }) => {
 
     return (
         <div>
-            <button onClick={handleAddButtonClick}>Kitaplarıma Ekle</button>
+            <button className="btn" onClick={handleAddButtonClick}>Kitaplarıma Ekle</button>
         </div>
     );
 };

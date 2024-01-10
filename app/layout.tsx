@@ -24,7 +24,7 @@ export default function RootLayout({
         <ColorSchemeScript defaultColorScheme="dark"/>
     </head>
     <body className={inter.className}>
-    <div className="flex flex-col min-h-screen bg-amber-200">
+    <div className="flex flex-col min-h-screen search-color">
         <Navbar/>
 -      <main className="flex-grow">{children}
           </main>

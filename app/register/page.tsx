@@ -3,7 +3,8 @@
     import { registerAPICall } from "@/app/services/AuthService";
     import  "./register-module.css";
     import Link from "next/link";
-    import {useRouter} from "next/navigation";
+    import {useRouter} from "next/navigation"
+
     const Register = () => {
         const router=useRouter()
         const [formData, setFormData] = useState({
@@ -34,6 +35,7 @@
 
         return (
             <div className="big">
+                <div>
                 <form onSubmit={handleSubmit}>
                     {Object.entries(formData).map(([key, value]) => (
                         <label key={key}>
@@ -46,12 +48,17 @@
                             />
                         </label>
                     ))}
-                    <div>
-                    <button>Register</button>
+                    <div className="register-justify">
+                    <button className="btn">Register</button>
                     <p className="mt-2"> Do you have account ? <Link href={"/login"}><b>Login</b></Link></p>
                     </div>
                  </form>
+                </div>
+                <div className="register-img">
+                    <img src="https://images.unsplash.com/photo-1605116959031-6e2d13a2ee56?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                </div>
             </div>
+
         );
     };
 

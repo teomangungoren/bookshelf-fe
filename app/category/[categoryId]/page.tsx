@@ -4,6 +4,7 @@ import {getBooksByCategoryIdAPICall} from "@/app/services/BookService";
 import {BookCard} from "@/app/components/bookcard/bookCard";
 import Link from "next/link";
 import {useAuth} from "@/app/hooks/auth";
+import "./page.css"
 
 interface Book{
     id:string,
@@ -27,7 +28,7 @@ const CategoryPage = ({ params }: { params: { categoryId: string } })=>{
 
     return(
         <div>
-            <div className="flex items-center flex-wrap gap-3 md:gap-10">
+            <div className="flex items-center flex-wrap book-category">
                 {bookList.map((book, index) => (
                         <BookCard key={book.id} book={book} />
                 ))}
